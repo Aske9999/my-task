@@ -24,18 +24,18 @@ const TaskItem = ({task}) => {
           {
             edit
               ? <input value={newText} onChange={(e) => setNewText(e.target.value)} className="text-black" type="text"/>
-              : <div>{task.text}</div>
+              : <div>{task.text} ({new Date(task.createdAt).toLocaleTimeString('ru-RU')})</div>
           }
         </div>
       </div>
       <div>
         {
           edit
-          ? <button onClick={saveTask} className="bg-blue-500 rounded-lg py-2 px-10 mr-2">Save</button>
-            :         <button onClick={() => setEdit(true)} className="bg-blue-500 rounded-lg py-2 px-10 mr-2">Edit</button>
+          ? <button onClick={saveTask} className="bg-blue-500 hover:bg-blue-900 rounded-lg py-2 px-10 mr-2">Save</button>
+            :         <button onClick={() => setEdit(true)} className="bg-blue-500 hover:bg-blue-900 rounded-lg py-2 px-10 mr-2">Edit</button>
 
         }
-        <button onClick={() => deleteTask(task.id)} className="bg-red-500 rounded-lg py-2 px-10">Delete</button>
+        <button onClick={() => deleteTask(task.id)} className="bg-red-500 hover:bg-red-900 rounded-lg py-2 px-10">Delete</button>
       </div>
     </div>
   );
