@@ -20,6 +20,7 @@ const Main = () => {
   }
 
   const addTask = () => {
+    setSortCategory(taskSelect)
     if (taskText.trim()) {
       dispatch({type: "ADD_TASK", text: taskText, order, category: taskSelect})
     }
@@ -54,7 +55,6 @@ const Main = () => {
 
   const sortByCategoryName = (e) => {
     setSortCategory(e.target.value)
-    dispatch({type: "SORT_BY_CATEGORY", category: sortCategory})
   }
 
   return (
@@ -62,7 +62,7 @@ const Main = () => {
     <div className="container mx-auto bg-slate-500 mt-10 py-4 px-6 border flex flex-wrap justify-center">
       <div className="text-indigo-400 text-xl py-4">
         Tasks List ( <span className="text-white">{tasks.length}</span> )
-        <select onChange={sortByCategoryName} className="rounded-lg py-2 px-2 ml-4">
+        <select value={sortCategory} onChange={sortByCategoryName} className="rounded-lg py-2 px-2 ml-4">
           <option value="All">All</option>
           {
             tasks
